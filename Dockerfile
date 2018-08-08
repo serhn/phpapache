@@ -2,7 +2,7 @@ FROM php:7.1.17-apache
 
 ENV MEMCACHED_VERSION 3.0.4 
 RUN apt-get update -y && apt-get install -y libpng-dev libsqlite3-dev
-RUN docker-php-ext-install gd pdo pdo_sqlite exif pdo_mysql zip
+RUN docker-php-ext-install gd pdo pdo_sqlite exif pdo_mysql zip soap
 
 
 RUN apt-get install -y mysql-client
@@ -57,6 +57,13 @@ RUN docker-php-ext-enable igbinary
 #      && docker-php-ext-enable memcached \
 
 
+RUN pecl install xdebug
+RUN docker-php-ext-enable xdebug
+RUN echo  "\
+   xdebug.remote_port=9000 \n\
+   xdebug.remote_enable=on \n\ 
+   xdebug.remote_log=/var/log/xdebug.log " >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+RUN touch /var/log/xdebug.log
 
 
 RUN apt-get install -y ssmtp
