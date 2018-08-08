@@ -1,7 +1,6 @@
 FROM php:7.1.17-apache
 
-ENV MEMCACHED_VERSION 3.0.4 
-RUN apt-get update -y && apt-get install -y libpng-dev libsqlite3-dev
+RUN apt-get update -y && apt-get install -y libpng-dev libsqlite3-dev libxml2-dev
 RUN docker-php-ext-install gd pdo pdo_sqlite exif pdo_mysql zip soap
 
 
