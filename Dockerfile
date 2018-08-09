@@ -34,7 +34,8 @@ RUN apt-get install -y libmagickwand-dev
 RUN pecl install imagick-beta
 RUN echo "extension=imagick.so" > /usr/local/etc/php/conf.d/ext-imagick.ini
 
-
+RUN pecl install apcu
+RUN docker-php-ext-enable apcu
 
 
 RUN apt-get install -y libz-dev libmemcached-dev
