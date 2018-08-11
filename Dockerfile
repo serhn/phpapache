@@ -13,7 +13,10 @@ RUN apt-get install -y dnsutils
 
 RUN apt-get install -y gnupg2
 
-#RUN curl -sL https://deb.nodesource.com/setup_8.x | bash -
+RUN a2enmod rewrite
+
+###RUN curl -sL https://deb.nodesource.com/setup_8.x | bash -
+
 RUN curl -sL https://deb.nodesource.com/setup_10.x | bash -
 RUN apt-get install -y nodejs
 
