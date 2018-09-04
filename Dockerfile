@@ -65,6 +65,7 @@ RUN docker-php-ext-enable xdebug
 RUN echo  "\
    xdebug.remote_port=9000 \n\
    xdebug.remote_enable=on \n\ 
+   xdebug.remote_host=172.17.0.1 \n\
    xdebug.remote_log=/var/log/xdebug.log " >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
 RUN touch /var/log/xdebug.log
 
